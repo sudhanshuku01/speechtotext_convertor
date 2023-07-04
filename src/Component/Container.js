@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import Speech from 'speak-tts'
 import Alert from  './alert';
-import Speech from 'react-speech';
 export default function Container() {
-  const [iscopid,setIscopid]=useState(false)
+const [iscopid,setIscopid]=useState(false)
+const speech = new Speech()
   const {
     transcript,  
     listening,
@@ -29,17 +30,17 @@ const handlecopy=()=>{
       <div className='container'>
            <div >Speech To Text Converter</div>
            <p>This is the react application for converting your speech to the text use it and make your work simple</p>
-      </div>
+      </div> 
       <div className='main-container'>
-            <div id='alltext'>{transcript}
-            </div>
+            <div id='alltext'>{transcript}</div>
             <div className='buttons'>
               <button onClick={handlecopy} >Copy Text</button>
-              <button onClick={SpeechRecognition.startListening}>Start Listening</button>
-              <button onClick={SpeechRecognition.stopListening}>Stop Listening</button>
+              <button onClick={() => SpeechRecognition.startListening({ continuous: true }) }>Start Listening</button>
+              <button onClick={()=>{
+                SpeechRecognition.stopListening()
+              }}>Stop Listening</button>
               <button onClick={resetTranscript}>Reset Text</button>
-              <Speech text={transcript} />
-              <i style={{marginLeft:"2px"}} className="fa-solid fa-volume-high"></i>
+              <button onClick={()=>speech.speak({text:`${transcript}`})} >Listen Text</button>
             </div>
       </div>
     </>

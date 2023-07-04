@@ -1,5 +1,4 @@
 {
-  "homepage": "https://sudhanshuku01.github.io/TextToSpeech",
   "name": "speechtotext",
   "version": "0.1.0",
   "private": true,
@@ -17,12 +16,11 @@
     "react-scripts": "5.0.1",
     "react-speech": "^1.0.2",
     "react-speech-recognition": "^3.10.0",
+    "speak-tts": "^2.0.8",
     "text-to-speech-js": "^1.1.10",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
